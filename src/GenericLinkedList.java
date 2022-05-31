@@ -36,31 +36,26 @@ public class GenericLinkedList {
     }
 
     public boolean isEmpty() {
-        if (firstElement == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return firstElement == null;
     }
 
     public void remove(Object obj) {
-        Element element = new Element(obj);
-        Element first = firstElement;
-        Element aux;
-        while (first != null) {
-            if (first.equals(element)) {
-                if (first.getNext() == null) {
-                    first.delete();
-                    break;
+        Element element = firstElement;
+        Element previous = null;
+        while (element != null){
+            if(element.getObject().equals(obj)){
+                if(element == firstElement){
+                    firstElement = element.getNext();
+                }else {
+                    previous.setNext(element.getNext());
+                    if(element == lastElement){
+                        lastElement = previous;
+                    }
                 }
-                aux = first.getNext();
-                first.setObject(aux.getObject());
-                if (aux.getNext() != null) {
-                    first.setNext(aux.getNext());
-                }
-                aux.delete();
+                element.delete();
             }
-            first = first.getNext();
+            previous = element;
+            element = element.getNext();
         }
     }
 
@@ -74,19 +69,21 @@ public class GenericLinkedList {
             contador++;
             element = element.getNext();
         }
-        return element.getObject();
+        return null;
     }
 
 
     public Object getFirstObject() {
-        Element element;
-        element = firstElement;
-        return element.getObject();
+        if(firstElement == null){
+            return null;
+        }
+        return firstElement.getObject();
     }
 
     public Object getLastObject() {
-        Element element;
-        element = lastElement;
-        return element.getObject();
+        if(lastElement == null){
+            return null;
+        }
+        return lastElement.getObject();
     }
 }
