@@ -1,12 +1,12 @@
-public class GenericLinkedList {
-    private Element firstElement = null;
-    private Element lastElement = null;
+public class GenericLinkedList<T> {
+    private Element<T> firstElement = null;
+    private Element<T> lastElement = null;
 
     public GenericLinkedList() {
     }
 
-    public void insertFirst(Object obj) {
-        Element element = new Element(obj);
+    public void insertFirst(T obj) {
+        Element<T> element = new Element<>(obj);
         if (firstElement == null) {
             firstElement = element;
             lastElement = firstElement;
@@ -16,8 +16,8 @@ public class GenericLinkedList {
         }
     }
 
-    public void insertLast(Object obj) {
-        Element element = new Element(obj);
+    public void insertLast(T obj) {
+        Element<T> element = new Element<>(obj);
         if (lastElement == null) {
             lastElement = element;
             firstElement = lastElement;
@@ -28,7 +28,7 @@ public class GenericLinkedList {
     }
 
     public void print() {
-        Element element = firstElement;
+        Element<T> element = firstElement;
         while (element != null) {
             System.out.println(element.getObject());
             element = element.getNext();
@@ -39,9 +39,9 @@ public class GenericLinkedList {
         return firstElement == null;
     }
 
-    public void remove(Object obj) {
-        Element element = firstElement;
-        Element previous = null;
+    public void remove(T obj) {
+        Element<T> element = firstElement;
+        Element<T> previous = null;
         while (element != null){
             if(element.getObject().equals(obj)){
                 if(element == firstElement){
@@ -59,8 +59,8 @@ public class GenericLinkedList {
         }
     }
 
-    private Object getObjectAtPosition(int index) {
-        Element element = firstElement;
+    private T getObjectAtPosition(int index) {
+        Element<T> element = firstElement;
         int contador = 0;
         while (element != null) {
             if (contador == index) {
@@ -73,14 +73,14 @@ public class GenericLinkedList {
     }
 
 
-    public Object getFirstObject() {
+    public T getFirstObject() {
         if(firstElement == null){
             return null;
         }
         return firstElement.getObject();
     }
 
-    public Object getLastObject() {
+    public T getLastObject() {
         if(lastElement == null){
             return null;
         }

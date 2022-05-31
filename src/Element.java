@@ -1,25 +1,25 @@
-public class Element <T> {
+public class Element<T> {
     private T object = null;
-    private Element next = null;
+    private Element<T> next = null;
 
     public Element(T newObject) {
         object = newObject;
     }
 
-    public void setNext(Element newNext) {
+    public void setNext(Element<T> newNext) {
         next = newNext;
     }
 
-    public Element getNext() {
+    public Element<T> getNext() {
         return next;
     }
 
-    public Object getObject() {
+    public T getObject() {
         return object;
     }
 
-    public void setObject(Object newObject) {
-        object = (T) newObject;
+    public void setObject(T newObject) {
+        object = newObject;
     }
 
     public void delete() {

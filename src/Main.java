@@ -1,6 +1,8 @@
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
-        GenericLinkedList list = new GenericLinkedList();
+        GenericLinkedList<String> list = new GenericLinkedList<>();
         System.out.println(list.isEmpty());
         list.insertFirst("Lucas");
         list.insertLast("Pepe");
@@ -12,6 +14,7 @@ public class Main {
         list.remove("Juan");
         list.remove("Jose");
         list.print();
+
         System.out.println(list.getFirstObject());
         System.out.println(list.getLastObject());
     }
